@@ -1,20 +1,28 @@
 var radio = document.getElementsByName('add-book');
         for (var i=0; i<radio.length; i++) {
-            radio[i].onchange = testRadio;
+            radio[i].onchange = addForm;
         }
 
-        function testRadio () {
-            if (this.value=='onload-book') {
+function addForm () {
+    var block = document.getElementById('radio-block')
+    block.innerHTML = ""
+            if (this.value=='create-book') {
                 let newDiv = document.createElement('div');
-                div.className = "onload-book-form";
-                newDiv.innerHTML = "Форма для загрузки книги";
-                document.getElementsByClassName("form-add-book").appendChild(newDiv);
-                // document.body.append(div)
+                console.log(newDiv);
+                newDiv.className = "onload-book-form";
+                newDiv.innerHTML = `<input class="input-title-book" type="text" />
+                <br />
+                <textarea></textarea>`
+                block.innerHTML = newDiv.outerHTML;
             }
-            else if (this.value=='create-book') {
-                let div = document.createElement('div');
-                div.className = "create-book-form";
-                div.innerHTML = "Форма для написания книги";
-                document.body.append(div)
+            else if (this.value=='onload-book') {
+                let newDiv = document.createElement('div');
+                console.log(newDiv);
+                newDiv.className = "onload-book-form";
+                newDiv.innerHTML = `
+                <input type="file" class="file" />
+                <button class="onload-book-btn">Добавить книгу</button>
+              `
+                block.innerHTML = newDiv.outerHTML;
             }
         }
