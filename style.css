@@ -21,7 +21,7 @@ body {
 
 .head-container-book {
   width: 400px;
-  height: 170px;
+  min-height: 170px;
   margin: 5px;
 }
 
@@ -29,7 +29,7 @@ h2 {
     margin: 5px;
 }
 
-li {
+.book-box {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -64,4 +64,8 @@ textarea {
 
 .onload-book-form {
   
+}
+
+.onload-book-btn {
+  cursor: pointer;
 }
