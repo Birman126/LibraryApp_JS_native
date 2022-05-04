@@ -1,5 +1,9 @@
 var books;
-!localStorage.books ? books =[] : books = JSON.parse(localStorage.getItem('books'))
+
+!localStorage.books
+  ? (books = [])
+  : (books = JSON.parse(localStorage.getItem("books")));
+
 
 
 function Book(title, description) {
@@ -44,17 +48,21 @@ function addForm() {
   const deskBookText = document.querySelector(".text-book");
   const addBookBtn = document.querySelector(".onload-book-btn");
 
-  addBookBtn.onclick = function() {
-    books.push(new Book(deskBookTitle.value, deskBookText.value))
-    console.log(books)
-    updateLocal()
-}
+  addBookBtn.onclick = function () {
+    books.push(new Book(deskBookTitle.value, deskBookText.value));
+    console.log(books);
+    updateLocal();
+    fillBookList();
+    createTemplate();
+    
+  };
+  
 }
 
-var bookList = document.querySelector(".book-list");
+var bookList = document.querySelector(".book-list_all");
 
 const createTemplate = (books, index) => {
-    return `
+  return `
         <div class="book-box">
             <p class="book-title">${books.title}</p>
             <button>ред.</button>
@@ -62,27 +70,42 @@ const createTemplate = (books, index) => {
             <button>читать</button>
             <button>Х</button>
         </div>
-    `
+    `;
 };
 
 const fillBookList = () => {
-    bookList.innerHTML = "";
-    if (books.length > 0) {
-        // for (let i=0; i < books.length; i++) {
-        //     bookList.innerHTML += 1
-        // }
-        books.forEach((item, index) => {
-            bookList.innerHTML += createTemplate(item, index);
-        });
-    }
+  bookList.innerHTML = "";
+  if (books.length > 0) {
+    // for (let i=0; i < books.length; i++) {
+    //     bookList.innerHTML += 1
+    // }
+    books.forEach((item, index) => {
+      bookList.innerHTML += createTemplate(item, index);
+    });
+  }
 };
 
 
-
-console.log(books.length)
 
 const updateLocal = () => {
-    localStorage.setItem('books', JSON.stringify(books))
+  localStorage.setItem("books", JSON.stringify(books));
 };
 
 
+
+// function addBookItem() {
+// var blockList = document.getElementById("book-list");
+// var newDivBookList = document.createElement("div");
+// newDivBookList.className = "book-list-item";
+// newDivBookList.innerHTML = `
+//     <div class="book-box">
+//       <p class="book-title">${books.title}</p>
+//       <button>ред.</button>
+//       <button>прочитал</button>
+//       <button>читать</button>
+//       <button>Х</button>
+//     </div>
+// `;
+// blockList.innerHTML = newDivBookList.outerHTML;
+// console.log(JSON.parse(localStorage.getItem("books")));
+// }
