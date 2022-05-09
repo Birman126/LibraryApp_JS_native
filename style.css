@@ -1,5 +1,5 @@
 * {
-  border: green solid 1px;
+  /* border: green solid 1px; */
 }
 
 
@@ -32,7 +32,7 @@ h2 {
 .book-box {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   list-style-type: circle;
 }
@@ -52,8 +52,12 @@ button {
 
 .input-title-book {
     width: 350px;
-    
     margin: 5px;
+}
+
+.input-file-title-book {
+  width: 350px;
+  margin: 5px;
 }
 
 textarea {
